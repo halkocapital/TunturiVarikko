@@ -17,18 +17,19 @@
     line-height: 1.6;
     background: #f8ecd4;
     color: #333;
-    background-image: url('Tunturivarikko.jpg');
-    background-size: 50% auto;
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-attachment: fixed;
-    }
+  background-image: url('Tunturivarikko.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-size: cover; /* default for small/mobile screens */
+}
 
-    @media only screen and (min-width:1px) and (max-width:700px) {
-        .image {
-    background-size: 200% auto;
-                }         
-                                                                }      
+/* On larger screens (e.g., desktops), switch to 'contain' */
+@media (min-width: 768px) {
+  body {
+    background-size: contain;
+  }
+}                                                          }      
 
     section {
       max-width: 800px;
