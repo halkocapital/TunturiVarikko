@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Varastotilaa Saariselällä - Tunturivarikko tarjoaa lämpimiä tallikontteja, kylmiä sisätiloja ja pihapaikkoja Saariselällä. Vuokraa varastotilaa moottorikelkoille, harrastusvälineille ja muulle kalustolle.">
+  <meta name="keywords" content="varasto Saariselällä, varastotila Saariselällä, tallikontti Saariselällä, varastotilat Saariselällä, vuokravarasto Saariselällä, Saariselkä varasto, Saariselkä varastotila">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph tags for social media -->
+  <meta property="og:title" content="Varastotilaa Saariselällä - Tunturivarikko">
+  <meta property="og:description" content="Vuokraa varastotilaa Saariselällä. Lämpimiä tallikontteja, kylmiä sisätiloja ja pihapaikkoja.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tunturivarikko.fi">
+  <meta property="og:image" content="Tunturivarikko.jpg">
+  
+  <title>Varastotilaa Saariselällä - Tunturivarikko | Vuokraa varastotila Saariselällä</title>
+  
+  <!-- Structured Data for Local Business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Tunturivarikko",
+    "description": "Varastotilaa vuokrattavana Saariselällä - lämpimiä tallikontteja, kylmiä sisätiloja ja pihapaikkoja",
+    "url": "https://tunturivarikko.fi",
+    "telephone": "+358505444237",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jemma",
+      "addressLocality": "Saariselkä",
+      "postalCode": "99830",
+      "addressCountry": "FI"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 68.4138136579473,
+      "longitude": 27.400034015147128
+    },
+    "openingHours": "Mo-Su 00:00-23:59",
+    "priceRange": "€€",
+    "serviceType": "Varastotilojen vuokraus",
+    "areaServed": "Saariselkä"
+  }
+  </script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    background: #f8ecd4;
+    color: #333;
+ 
+    background-image: url('Tunturivarikko.jpg');
+    background-size: 100% auto;
+    background-attachment: scroll;
+    background-repeat: repeat;
+    background-position: center top;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      cursor: pointer;
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .modal img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+    }
+
+    .clickable-image {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .clickable-image:hover {
+      transform: scale(1.02);
+    }
+      
+    section.map-section {
+      padding: 40px 20px;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+
+    .map-section h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .map-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      height: 450px;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+
+    section {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    h1, h2 {
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #e2e8f0;
+        
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <section>
+    <h1 style="text-align:center; color: #244d5e;">
+        VARASTOTILAA SAARISELÄLLÄ – TUNTURIVARIKKO
+    </h1>
+    <h3 style="text-align:center; font-weight: bold; font-style: italic; color: #57818a;">
+    Vuokraa varastotilaa Saariselällä - pieniin ja suuriin tarpeisiin
+      </h3>
+    <p style="text-align: center; margin-top: 15px; color: #666;">
+      <strong>Varastotilaa Saariselällä</strong> - Tunturivarikko tarjoaa monipuoliset varastoratkaisut Saariselän alueella. 
+      Vuokraa varastotilaa moottorikelkoille, harrastusvälineille ja muulle kalustolle.
+    </p>
+  </section>
+
+  
+  <section>
+    <h1 style="text-align:center; color: #244d5e;">
+        VARASTOTILAT SAARISELÄLLÄ – TUNTURIVARIKKO JEMMASSA
+    </h1>   
+    <p><strong>Varastotilat Saariselällä</strong> - Tunturivarikko Jemmassa tarjoaa monipuoliset ja käytännölliset ratkaisut turvalliseen ja huolettomaan säilytykseen kaikille asiakkaille, olipa kyseessä moottorikelkat, harrastusvälineet tai muu säilytystarve. <strong>Vuokraa varastotilaa Saariselällä</strong> ja unohda säilytyshuolesi – keskity nauttimaan pohjoisen elämyksistä, me hoidamme loput!</p>
+  </section>
+
+  
+  <section>
+    <h2 style="text-align:center; color: #244d5e;">
+        TARJOAMME
+    </h2>
+    <ul>
+        <li><strong>Lämpimät tallikontit</strong> – Lämmin ja kuiva sisätila tavaran säilyttämiseen ja pieniin huoltotöihin.</li>
+        <li><strong>Kylmät sisätilat konteissa</strong> – Suojaisa ja lukittava varastotila esimerkiksi moottorikelkkojen ja muiden laitteiden säilytykseen.</li>
+      <li><strong>Pihapaikat</strong> – Sopivat erinomaisesti suuremmalle ja pienemmälle kalustolle, kuten linja-autoille ja peräkärryille.</li>
+      <li><strong>Räätälöidyt ratkaisut</strong> – Tarvitsetko jotain erityistä? Lämmitettyä tilaa? Pakastetilaa? Voimme toteuttaa säilytysratkaisun tarpeesi mukaan. Kysy!</li>
+    </ul>
+    <p>Tunturivarikolla saat käyttöösi varastotilaa, joka on suunniteltu juuri säilyttämiseen – emme vuokraa kontteja, vaan tarjoamme toimivaa ja turvallista säilytystilaa valmiissa yksiköissä.</p>
+  </section>
+
+
+  <section class="map-section">
+    <h2 style="text-align:center; color: #244d5e;">SIJAINTI</h2>
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2966.39368073136!2d27.400034015147128!3d68.4138136579473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x45cd433cb9778031%3A0x965e3b2c1f43e09e!2sSaarisel%C3%A4n%20Teolisalue!5e0!3m2!1sen!2sfi!4v1750757705759!5m2!1sen!2sfi" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+  <section>
+    <h2 style="text-align:center; color: #244d5e;">ALUE</h2>
+    <div style="text-align: center; margin: 20px 0;">
+      <video controls style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <source src="Saariselka_varikko.mov" type="video/quicktime">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <p style="text-align: center; color: #666; font-style: italic;">Video Tunturivarikon alueesta Saariselällä</p>
+  </section>
+
+  <section>
+    <h2 style="text-align:center; color: #244d5e;">KUVAT</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+        <div style="text-align: center;">
+          <img src="Saariselka_varikko_1.jpeg" alt="Tunturivarikko Saariselällä" class="clickable-image" onclick="openModal(this.src)" style="width: 100%; max-width: 300px; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        </div>
+        <div style="text-align: center;">
+          <img src="Saariselka_varikko_2.JPG" alt="Tunturivarikko Saariselällä" class="clickable-image" onclick="openModal(this.src)" style="width: 100%; max-width: 300px; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        </div>
+        <div style="text-align: center;">
+          <img src="Saariselka_varikko_3.JPG" alt="Tunturivarikko Saariselällä" class="clickable-image" onclick="openModal(this.src)" style="width: 100%; max-width: 300px; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        </div>
+        <div style="text-align: center;">
+          <img src="Saariselka_varikko_4.JPG" alt="Tunturivarikko Saariselällä" class="clickable-image" onclick="openModal(this.src)" style="width: 100%; max-width: 300px; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        </div>
+        <div style="text-align: center;">
+          <img src="Saariselka_varikko_5.JPG" alt="Tunturivarikko Saariselällä" class="clickable-image" onclick="openModal(this.src)" style="width: 100%; max-width: 300px; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        </div>
+        <div style="text-align: center;">
+          <img src="Saariselka_varikko_6.JPG" alt="Tunturivarikko Saariselällä" class="clickable-image" onclick="openModal(this.src)" style="width: 100%; max-width: 300px; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        </div>
+      </div>
+  </section>
+
+  <section>
+    <h2 style="text-align:center; color: #244d5e;"> HINNOITTELU</h2>
+    <ul>
+        <li><strong>13 neliön varasto:</strong> 100 euroa / kuukausi</li>
+        <li><strong>26 neliön varasto:</strong> 150 euroa / kuukausi</li>
+        <li><strong>Pihapaikat:</strong> Kysy!</li>
+    </ul>
+  </section>
+
+  
+  <section>
+    <h2 style="text-align:center; color: #244d5e;"> YHTEYSTIEDOT</h2>
+    <ul>
+ 
+        <h4 style="text-align:center; color: #333;">ANTTI KERÄNEN</h4>
+        <h4 style="text-align:center; color: #333;">050 544 4237</h4>
+        <h4 style="text-align:center; color: #333;">info at tunturivarikko.fi</h4>
+        <br>
+        <h4 style="text-align:center; color: #333;">JEMMA</h4>
+        <h4 style="text-align:center; color: #333;">99830 SAARISELKÄ</h4>
+        <br>
+        <h4 style="text-align: center;">
+        <a href="https://www.facebook.com/profile.php?id=61577734971479" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           style="color: #244d5e; text-decoration: none;">
+          TUNTURIVARIKON FACEBOOK
+        </a>
+        </h4>
+      
+  </ul>
+  </section>
+
+
+  <section>
+    <h2 style="text-align:center; color: #244d5e;">VARASTOTILAT SAARISELÄLLÄ</h2>
+    <p style="text-align: center; color: #666; margin-bottom: 20px;">
+      <strong>Varastotilaa Saariselällä</strong> on saatavilla Tunturivarikon kautta. Tarjoamme lämpimiä tallikontteja, 
+      kylmiä sisätiloja ja pihapaikkoja eri tarpeisiin. <strong>Vuokraa varastotilaa Saariselällä</strong> ja 
+      nauti huolettomasta säilytyksestä pohjoisen luonnossa.
+    </p>
+    <h5 style="text-align: center; color: #333; font-style: italic; font-weight: normal;">
+      &copy; 2025 Tunturivarikko Saariselkä. Kaikki oikeudet pidätetään.
+    </h5>
+  </section>
+
+  <!-- Modal for enlarged images -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <script>
+    function openModal(imageSrc) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modal.style.display = "block";
+      modalImg.src = imageSrc;
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = "none";
+    }
+
+    // Close modal when pressing Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+
+</body>
+</html>
