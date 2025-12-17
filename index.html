@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varastotilaa Saariselällä - Tunturivarikko</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Language Selector */
+        .language-selector { position: fixed; top: 20px; right: 20px; z-index: 1000; }
+        .language-dropdown { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-radius: 12px; padding: 10px 15px; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .language-dropdown i { color: #2563eb; font-size: 16px; }
+        .language-dropdown select { background: transparent; border: none; outline: none; cursor: pointer; font-weight: 600; color: #1f2937; font-size: 14px; }
+
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%); color: white; padding: 120px 0 80px; text-align: center; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; margin-bottom: 24px; }
+        .hero p { font-size: clamp(1.1rem, 2vw, 1.3rem); margin-bottom: 40px; color: rgba(255,255,255,0.9); max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero-buttons { display: flex; flex-direction: column; gap: 16px; align-items: center; }
+        @media (min-width: 640px) { .hero-buttons { flex-direction: row; justify-content: center; } }
+
+        /* Buttons */
+        .btn { padding: 16px 32px; font-size: 16px; font-weight: 600; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; min-width: 200px; justify-content: center; }
+        .btn-primary { background: white; color: #1e40af; box-shadow: 0 4px 14px rgba(0,0,0,0.1); }
+        .btn-primary:hover { background: #f8fafc; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+        .btn-secondary { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.8); }
+        .btn-secondary:hover { background: white; color: #1e40af; transform: translateY(-2px); }
+
+        /* Sections */
+        .section { padding: 80px 0; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: clamp(2rem, 4vw, 2.5rem); font-weight: 800; color: #1f2937; margin-bottom: 16px; }
+        .section-header p { font-size: 18px; color: #6b7280; max-width: 600px; margin: 0 auto; }
+
+        /* Services */
+        .services { background: white; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
+        .service-card { background: white; border-radius: 16px; padding: 40px 32px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+        .service-icon { width: 80px; height: 80px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; border-radius: 20px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); }
+        .service-icon i { font-size: 36px; color: #1e40af; }
+        .service-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 16px; color: #1f2937; }
+        .service-card p { color: #6b7280; margin-bottom: 24px; }
+        .service-features { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .feature-badge { background: #f1f5f9; color: #475569; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+
+        /* Pricing */
+        .pricing { background: #f8fafc; }
+        .pricing-category { margin-bottom: 60px; }
+        .pricing-category h3 { text-align: center; font-size: 28px; font-weight: 700; color: #1e40af; margin-bottom: 40px; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
+        .pricing-card { background: white; border-radius: 16px; padding: 40px 32px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: relative; transition: all 0.3s ease; }
+        .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+        .pricing-card.featured { border: 2px solid #1e40af; }
+        .badge { position: absolute; top: -12px; right: -12px; background: #ef4444; color: white; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+        .pricing-card h4 { font-size: 20px; font-weight: 600; margin-bottom: 20px; color: #1f2937; }
+        .price { font-size: 36px; font-weight: 800; color: #1e40af; margin-bottom: 32px; }
+        .features { list-style: none; text-align: left; }
+        .features li { display: flex; align-items: center; margin-bottom: 12px; font-size: 14px; color: #6b7280; }
+        .features li::before { content: '●'; color: #1e40af; font-weight: bold; margin-right: 12px; font-size: 16px; }
+
+        /* Contact */
+        .contact { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); color: white; }
+        .contact .section-header h2 { color: white; }
+        .contact .section-header p { color: rgba(255,255,255,0.8); }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px; }
+        .contact-card { background: rgba(255,255,255,0.1); padding: 40px 32px; border-radius: 16px; text-align: center; backdrop-filter: blur(10px); }
+        .contact-card i { font-size: 32px; color: rgba(255,255,255,0.8); margin-bottom: 20px; }
+        .contact-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .contact-card p { color: rgba(255,255,255,0.9); font-size: 16px; }
+        .contact-button { text-align: center; }
+
+        /* Footer */
+        .footer { background: #1f2937; color: white; padding: 40px 0; text-align: center; }
+        .social-links { margin-bottom: 24px; display: flex; flex-wrap: wrap; justify-content: center; gap: 32px; }
+        .social-links a { color: #60a5fa; text-decoration: none; font-size: 16px; transition: color 0.3s ease; display: flex; align-items: center; gap: 8px; }
+        .social-links a:hover { color: #93c5fd; }
+        .copyright { color: #9ca3af; font-size: 14px; }
+
+        /* WhatsApp Float - ENHANCED */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+        .whatsapp-prompt { background: #25d366; color: white; padding: 14px 22px; border-radius: 25px; font-size: 15px; font-weight: 600; animation: bounce 2s infinite; box-shadow: 0 6px 25px rgba(37,211,102,0.4); white-space: nowrap; position: relative; }
+        .whatsapp-prompt::after { content: ''; position: absolute; bottom: -8px; right: 20px; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid #25d366; }
+        .whatsapp-btn { background: #25d366; color: white; border: none; border-radius: 50%; width: 75px; height: 75px; font-size: 30px; cursor: pointer; animation: pulse 3s infinite; box-shadow: 0 8px 30px rgba(37,211,102,0.5); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; }
+        .whatsapp-btn:hover { background: #22c55e; transform: scale(1.1); box-shadow: 0 10px 35px rgba(37,211,102,0.6); }
+
+        /* Animations */
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-8px); } 60% { transform: translateY(-4px); } }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero { padding: 100px 0 60px; }
+            .section { padding: 60px 0; }
+            .services-grid, .pricing-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .social-links { flex-direction: column; gap: 16px; }
+            .whatsapp-float { bottom: 20px; right: 20px; }
+            .whatsapp-btn { width: 65px; height: 65px; font-size: 26px; }
+            .whatsapp-prompt { font-size: 13px; padding: 10px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <div class="language-dropdown">
+            <i class="fas fa-globe"></i>
+            <select id="languageSelect">
+                <option value="fi">Suomi</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 id="heroTitle">Varastotilaa Saariselällä</h1>
+            <p id="heroSubtitle">Tunturivarikko tarjoaa monipuoliset ja käytännölliset ratkaisut turvalliseen ja huolettomaan säilytykseen</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToPricing()">
+                    <i class="fas fa-euro-sign"></i>
+                    <span id="viewPricingBtn">Katso hinnoittelu</span>
+                </button>
+                <button class="btn btn-secondary" onclick="scrollToContact()">
+                    <i class="fas fa-phone"></i>
+                    <span id="contactBtn">Ota yhteyttä</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="servicesTitle">Tarjoamme</h2>
+                <p id="servicesSubtitle">Vuokraa varastotilaa Saariselällä ja unohda säilytyshuolesi – keskity nauttimaan pohjoisen elämyksistä!</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-home"></i></div>
+                    <h3 id="service1Title">Lämpimät tallikontit</h3>
+                    <p id="service1Desc">Lämmin ja kuiva sisätila tavaran säilyttämiseen ja pieniin huoltotöihin.</p>
+                    <div class="service-features">
+                        <span class="feature-badge" id="service1Feature1">Lämmitetty</span>
+                        <span class="feature-badge" id="service1Feature2">Kuiva</span>
+                        <span class="feature-badge" id="service1Feature3">Turvallinen</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-warehouse"></i></div>
+                    <h3 id="service2Title">Kylmät sisätilat konteissa</h3>
+                    <p id="service2Desc">Suojaisa ja lukittava varastotila esimerkiksi moottorikelkkojen ja muiden laitteiden säilytykseen.</p>
+                    <div class="service-features">
+                        <span class="feature-badge" id="service2Feature1">Lukittava</span>
+                        <span class="feature-badge" id="service2Feature2">Suojattu</span>
+                        <span class="feature-badge" id="service2Feature3">Turvallinen</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-truck"></i></div>
+                    <h3 id="service3Title">Pihapaikkoja</h3>
+                    <p id="service3Desc">Sopivat erinomaisesti suuremmalle ja pienemmälle kalustolle, kuten linja-autoille ja peräkärryille.</p>
+                    <div class="service-features">
+                        <span class="feature-badge" id="service3Feature1">Ulkotila</span>
+                        <span class="feature-badge" id="service3Feature2">Suurille ajoneuvoille</span>
+                        <span class="feature-badge" id="service3Feature3">Edullinen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing-section" class="section pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="pricingTitle">Hinnoittelu</h2>
+                <p id="pricingSubtitle">Kilpailukykyiset hinnat kaikille varastotyypeille</p>
+            </div>
+            
+            <div class="pricing-category">
+                <h3 id="storage13Title">13 neliön varastot</h3>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h4 id="storage13Basic">13 neliön varasto</h4>
+                        <div class="price">99 €/kk</div>
+                        <ul class="features">
+                            <li id="storage13BasicFeature1">Perusvarasto</li>
+                            <li id="storage13BasicFeature2">Lukittava</li>
+                            <li id="storage13BasicFeature3">Turvallinen</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card">
+                        <h4 id="storage13Electric">13 neliön sähköistetty varasto</h4>
+                        <div class="price">129 €/kk</div>
+                        <ul class="features">
+                            <li id="storage13ElectricFeature1">Sähkö</li>
+                            <li id="storage13ElectricFeature2">Valaistus</li>
+                            <li id="storage13ElectricFeature3">Pistorasiat</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card featured">
+                        <div class="badge" id="offerBadge">TARJOUS!</div>
+                        <h4 id="storage13Insulated">13 neliön sähköistetty ja eristetty varasto</h4>
+                        <div class="price">229 €/kk</div>
+                        <ul class="features">
+                            <li id="storage13InsulatedFeature1">Valaistus ja pistorasiat</li>
+                            <li id="storage13InsulatedFeature2">Lämpöeristetty</li>
+                            <li id="storage13InsulatedFeature3">Sähkölämmitys</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-category">
+                <h3 id="outdoorTitle">Pihapaikkoja</h3>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h4 id="trailerParking">Peräkärrypaikka</h4>
+                        <div class="price">99 €/kausi</div>
+                        <ul class="features">
+                            <li id="trailerFeature1">Talvi tai kesä</li>
+                            <li id="trailerFeature2">Ulkotila</li>
+                            <li id="trailerFeature3">Henkilöauton peräkärrylle</li>
+                            <li id="trailerFeature4">Kameravalvonta</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card">
+                        <h4 id="heavyTraffic">Raskas liikenne ja työkoneet</h4>
+                        <div class="price" id="askPrice">Kysy</div>
+                        <ul class="features">
+                            <li id="heavyFeature1">Talvi tai kesä</li>
+                            <li id="heavyFeature2">Ulkotila</li>
+                            <li id="heavyFeature3">Suurille ajoneuvoille</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact-section" class="section contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="contactTitle">Yhteystiedot</h2>
+                <p id="contactSubtitle">Ota yhteyttä ja kysy lisää varastotiloistamme</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3 id="phoneTitle">Puhelin</h3>
+                    <p>050 544 4237</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3 id="emailTitle">Sähköposti</h3>
+                    <p>info@tunturivarikko.fi</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-user"></i>
+                    <h3 id="contactPersonTitle">Yhteyshenkilö</h3>
+                    <p>Antti Keränen</p>
+                </div>
+            </div>
+            <div class="contact-button">
+                <button class="btn btn-primary" onclick="window.location.href='mailto:info@tunturivarikko.fi'">
+                    <i class="fas fa-envelope"></i>
+                    <span id="emailNowBtn">Lähetä sähköposti</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61577734971479" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook"></i>
+                    <span id="facebookLink">Tunturivarikon Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/tunturivarikko/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                    <span id="instagramLink">Tunturivarikon Instagram</span>
+                </a>
+                <a href="https://www.youtube.com/@Tunturivarikko" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-youtube"></i>
+                    <span id="youtubeLink">Tunturivarikon YouTube</span>
+                </a>
+            </div>
+            <p class="copyright" id="copyright">© 2025 Tunturivarikko Saariselkä. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float - ENHANCED WITH PROMPT -->
+    <div class="whatsapp-float">
+        <div class="whatsapp-prompt" id="whatsappPrompt">Kysy WhatsAppissa</div>
+        <button class="whatsapp-btn" onclick="openWhatsApp()" title="Kysy WhatsAppissa">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+    </div>
+
+    <script>
+        console.log('🚀 Tunturivarikko website loaded successfully');
+        
+        const translations = {
+            fi: {
+                heroTitle: 'Varastotilaa Saariselällä',
+                heroSubtitle: 'Tunturivarikko tarjoaa monipuoliset ja käytännölliset ratkaisut turvalliseen ja huolettomaan säilytykseen',
+                viewPricingBtn: 'Katso hinnoittelu',
+                contactBtn: 'Ota yhteyttä',
+                servicesTitle: 'Tarjoamme',
+                servicesSubtitle: 'Vuokraa varastotilaa Saariselällä ja unohda säilytyshuolesi – keskity nauttimaan pohjoisen elämyksistä!',
+                service1Title: 'Lämpimät tallikontit',
+                service1Desc: 'Lämmin ja kuiva sisätila tavaran säilyttämiseen ja pieniin huoltotöihin.',
+                service1Feature1: 'Lämmitetty',
+                service1Feature2: 'Kuiva',
+                service1Feature3: 'Turvallinen',
+                service2Title: 'Kylmät sisätilat konteissa',
+                service2Desc: 'Suojaisa ja lukittava varastotila esimerkiksi moottorikelkkojen ja muiden laitteiden säilytykseen.',
+                service2Feature1: 'Lukittava',
+                service2Feature2: 'Suojattu',
+                service2Feature3: 'Turvallinen',
+                service3Title: 'Pihapaikkoja',
+                service3Desc: 'Sopivat erinomaisesti suuremmalle ja pienemmälle kalustolle, kuten linja-autoille ja peräkärryille.',
+                service3Feature1: 'Ulkotila',
+                service3Feature2: 'Suurille ajoneuvoille',
+                service3Feature3: 'Edullinen',
+                pricingTitle: 'Hinnoittelu',
+                pricingSubtitle: 'Kilpailukykyiset hinnat kaikille varastotyypeille',
+                storage13Title: '13 neliön varastot',
+                outdoorTitle: 'Pihapaikkoja',
+                storage13Basic: '13 neliön varasto',
+                storage13BasicFeature1: 'Perusvarasto',
+                storage13BasicFeature2: 'Lukittava',
+                storage13BasicFeature3: 'Turvallinen',
+                storage13Electric: '13 neliön sähköistetty varasto',
+                storage13ElectricFeature1: 'Sähkö',
+                storage13ElectricFeature2: 'Valaistus',
+                storage13ElectricFeature3: 'Pistorasiat',
+                storage13Insulated: '13 neliön sähköistetty ja eristetty varasto',
+                storage13InsulatedFeature1: 'Valaistus ja pistorasiat',
+                storage13InsulatedFeature2: 'Lämpöeristetty',
+                storage13InsulatedFeature3: 'Sähkölämmitys',
+                trailerParking: 'Peräkärrypaikka',
+                trailerFeature1: 'Talvi tai kesä',
+                trailerFeature2: 'Ulkotila',
+                trailerFeature3: 'Henkilöauton peräkärrylle',
+                trailerFeature4: 'Kameravalvonta',
+                heavyTraffic: 'Raskas liikenne ja työkoneet',
+                askPrice: 'Kysy',
+                heavyFeature1: 'Talvi tai kesä',
+                heavyFeature2: 'Ulkotila',
+                heavyFeature3: 'Suurille ajoneuvoille',
+                offerBadge: 'TARJOUS!',
+                contactTitle: 'Yhteystiedot',
+                contactSubtitle: 'Ota yhteyttä ja kysy lisää varastotiloistamme',
+                phoneTitle: 'Puhelin',
+                emailTitle: 'Sähköposti',
+                contactPersonTitle: 'Yhteyshenkilö',
+                emailNowBtn: 'Lähetä sähköposti',
+                facebookLink: 'Tunturivarikon Facebook',
+                instagramLink: 'Tunturivarikon Instagram',
+                youtubeLink: 'Tunturivarikon YouTube',
+                copyright: '© 2025 Tunturivarikko Saariselkä. Kaikki oikeudet pidätetään.',
+                whatsappPrompt: 'Kysy WhatsAppissa',
+                whatsappMessage: 'Hei! Haluaisin kysyä varastotiloista Saariselällä.'
+            },
+            en: {
+                heroTitle: 'Storage Space in Saariselkä',
+                heroSubtitle: 'Tunturivarikko offers versatile and practical solutions for safe and worry-free storage',
+                viewPricingBtn: 'View Pricing',
+                contactBtn: 'Contact Us',
+                servicesTitle: 'We Offer',
+                servicesSubtitle: 'Rent storage space in Saariselkä and forget your storage worries – focus on enjoying the northern experiences!',
+                service1Title: 'Heated Storage Units',
+                service1Desc: 'Warm and dry indoor space for storing goods and small maintenance work.',
+                service1Feature1: 'Heated',
+                service1Feature2: 'Dry',
+                service1Feature3: 'Secure',
+                service2Title: 'Cold Indoor Storage',
+                service2Desc: 'Protected and lockable storage space for snowmobiles and other equipment.',
+                service2Feature1: 'Lockable',
+                service2Feature2: 'Protected',
+                service2Feature3: 'Secure',
+                service3Title: 'Outdoor Parking',
+                service3Desc: 'Perfect for larger and smaller equipment, such as buses and trailers.',
+                service3Feature1: 'Outdoor',
+                service3Feature2: 'Large vehicles',
+                service3Feature3: 'Affordable',
+                pricingTitle: 'Pricing',
+                pricingSubtitle: 'Competitive prices for all storage types',
+                storage13Title: '13 sqm Storage Units',
+                outdoorTitle: 'Outdoor Parking',
+                storage13Basic: '13 sqm storage',
+                storage13BasicFeature1: 'Basic storage',
+                storage13BasicFeature2: 'Lockable',
+                storage13BasicFeature3: 'Secure',
+                storage13Electric: '13 sqm electrified storage',
+                storage13ElectricFeature1: 'Electricity',
+                storage13ElectricFeature2: 'Lighting',
+                storage13ElectricFeature3: 'Power outlets',
+                storage13Insulated: '13 sqm electrified and insulated storage',
+                storage13InsulatedFeature1: 'Lighting and power outlets',
+                storage13InsulatedFeature2: 'Heat insulated',
+                storage13InsulatedFeature3: 'Electric heating',
+                trailerParking: 'Trailer parking',
+                trailerFeature1: 'Winter or summer',
+                trailerFeature2: 'Outdoor',
+                trailerFeature3: 'For car trailers',
+                trailerFeature4: 'Camera surveillance',
+                heavyTraffic: 'Heavy traffic and machinery',
+                askPrice: 'Ask',
+                heavyFeature1: 'Winter or summer',
+                heavyFeature2: 'Outdoor',
+                heavyFeature3: 'For large vehicles',
+                offerBadge: 'OFFER!',
+                contactTitle: 'Contact Information',
+                contactSubtitle: 'Get in touch and ask more about our storage facilities',
+                phoneTitle: 'Phone',
+                emailTitle: 'Email',
+                contactPersonTitle: 'Contact Person',
+                emailNowBtn: 'Send Email',
+                facebookLink: 'Tunturivarikko Facebook',
+                instagramLink: 'Tunturivarikko Instagram',
+                youtubeLink: 'Tunturivarikko YouTube',
+                copyright: '© 2025 Tunturivarikko Saariselkä. All rights reserved.',
+                whatsappPrompt: 'Ask on WhatsApp',
+                whatsappMessage: 'Hi! I would like to ask about storage facilities in Saariselkä.'
+            }
+        };
+
+        let currentLanguage = 'fi';
+
+        function scrollToPricing() {
+            console.log('🎯 Scrolling to pricing section');
+            const element = document.getElementById('pricing-section');
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                console.log('✅ Successfully scrolled to pricing');
+            }
+        }
+
+        function scrollToContact() {
+            console.log('🎯 Scrolling to contact section');
+            const element = document.getElementById('contact-section');
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                console.log('✅ Successfully scrolled to contact');
+            }
+        }
+
+        function openWhatsApp() {
+            console.log('📱 Opening WhatsApp');
+            const phoneNumber = "358505444237";
+            const message = encodeURIComponent(translations[currentLanguage].whatsappMessage);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+            console.log('🔗 WhatsApp URL:', whatsappUrl);
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function switchLanguage(lang) {
+            console.log('🌐 Switching language to:', lang);
+            currentLanguage = lang;
+            const t = translations[lang];
+            
+            if (!t) {
+                console.error('❌ Language not found:', lang);
+                return;
+            }
+            
+            let updated = 0;
+            for (const key in t) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = t[key];
+                    updated++;
+                }
+            }
+            
+            document.documentElement.lang = lang;
+            console.log(`✅ Language switched to ${lang}, updated ${updated} elements`);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 DOM loaded, initializing...');
+            
+            const languageSelect = document.getElementById('languageSelect');
+            if (languageSelect) {
+                languageSelect.addEventListener('change', function(e) {
+                    console.log('🔄 Language changed to:', e.target.value);
+                    switchLanguage(e.target.value);
+                });
+            }
+            
+            switchLanguage('fi');
+            console.log('🎉 Initialization complete - Website ready!');
+        });
+    </script>
+</body>
+</html>

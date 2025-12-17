@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "message": "Successfully crawled 1 pages from https://www.tunturivarikko.fi. The HTML content has been saved and should be analyzed to understand the website's structure, design patterns, navigation, content organization, and visual elements for creating a similar website.",
+  "website_url": "https://www.tunturivarikko.fi",
+  "total_pages": 1,
+  "combined_summary": "页面 1: https://www.tunturivarikko.fi\n摘要: 该网页是芬兰萨利色尔卡地区Tunturivarikko（也称Tunturivarikko Jemma）的官方网站，提供多功能仓储服务。\n\n**1. 主要内容和主题：**\n网站核心是在萨利色尔卡出租安全、无忧的仓储空间，主要用于存放雪地摩托、爱好设备及其他物品。强调提供功能齐全的独立存储单元（非集装箱），包括温暖单元、冷库和室外车位，以满足不同客户需求。\n\n**2. 重要的文章标题和链接：**\n*   主标题反复出现“萨利色尔卡的仓储空间 - Tunturivarikko”。\n*   章节标题包括：“我们提供”、“位置”、“定价”、“联系方式”。\n*   具体仓储类型标题有：“13平方米仓储”、“26平方米仓储”、“室外停车位”。\n*   包含其Facebook页面的链接。\n*   网页内嵌了区域介绍视频、谷歌地图及多张仓库图片。\n\n**3. 关键信息和数据：**\n*   服务地点：萨利色尔卡，具体地址JEMMA, 99830 SAARISELKÄ。\n*   存储选项：提供13平方米和26平方米的室内仓储，以及室外停车位。\n*   联系方式：联系人Antti Keränen，电话050 544 4237，邮箱info@tunturivarikko.fi。\n\n**4. 网页的结构和布局特点：**\n网页采用单页滚动式布局，通过居中对齐的H1、H2、H3标题清晰划分内容区域，依次介绍服务、位置、不同存储类型、定价和联系方式。内容以文本介绍为主，辅以视频、地图和多张图片进行视觉展示，整体设计简洁直观。\n",
+  "file_paths": [
+    {
+      "page_number": 1,
+      "url": "https://www.tunturivarikko.fi",
+      "html_file_path": "/workspace/tunturivarikko_website/website_crawl/pages/page_0_www.tunturivarikko.fi_index.html",
+      "summary": "该网页是芬兰萨利色尔卡地区Tunturivarikko（也称Tunturivarikko Jemma）的官方网站，提供多功能仓储服务。\n\n**1. 主要内容和主题：**\n网站核心是在萨利色尔卡出租安全、无忧的仓储空间，主要用于存放雪地摩托、爱好设备及其他物品。强调提供功能齐全的独立存储单元（非集装箱），包括温暖单元、冷库和室外车位，以满足不同客户需求。\n\n**2. 重要的文章标题和链接：**\n*   主标题反复出现“萨利色尔卡的仓储空间 - Tunturivarikko”。\n*   章节标题包括：“我们提供”、“位置”、“定价”、“联系方式”。\n*   具体仓储类型标题有：“13平方米仓储”、“26平方米仓储”、“室外停车位”。\n*   包含其Facebook页面的链接。\n*   网页内嵌了区域介绍视频、谷歌地图及多张仓库图片。\n\n**3. 关键信息和数据：**\n*   服务地点：萨利色尔卡，具体地址JEMMA, 99830 SAARISELKÄ。\n*   存储选项：提供13平方米和26平方米的室内仓储，以及室外停车位。\n*   联系方式：联系人Antti Keränen，电话050 544 4237，邮箱info@tunturivarikko.fi。\n\n**4. 网页的结构和布局特点：**\n网页采用单页滚动式布局，通过居中对齐的H1、H2、H3标题清晰划分内容区域，依次介绍服务、位置、不同存储类型、定价和联系方式。内容以文本介绍为主，辅以视频、地图和多张图片进行视觉展示，整体设计简洁直观。"
+    }
+  ]
+}
