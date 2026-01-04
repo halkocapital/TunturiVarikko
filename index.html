@@ -52,7 +52,37 @@
                 .video-button:active {
                     transform: translateY(0);
                 }
-
+            
+            .lightbox {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: none;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+            }
+            
+            .lightbox img {
+                max-width: 90%;
+                max-height: 90%;
+            }
+            
+            .lightbox:target {
+                display: flex;
+            }
+            
+            .close {
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                font-size: 32px;
+                color: white;
+                text-decoration: none;
+            }
         
         html {
             scroll-behavior: smooth;
@@ -765,54 +795,94 @@
             </div>
             
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="Saariselka_varasto_1.jpeg" alt="Lämpimät varastotilat">
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="Saariselka_varasto_2.JPG" alt="Tunturivarikko sisätilat">
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="Saariselka_varasto_3.JPG" alt="Varastotilat Saariselällä">
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="Saariselka_varasto_4.JPG" alt="Varastokontit Tunturivarikko">
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="Saariselka_varasto_piha.JPG" alt="Peräkärrypaikkoja Saariselällä">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="Saariselka_varasto_6.JPG" alt="Lämpimät varastotilat">
-                </div>
-              
-                <div class="gallery-item">
-                    <img src="Saariselka_varasto_7.jpg" alt="Saariselkä tilaa">
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="Saariselka_moottorikelkkavarasto.jpg" alt="Moottorikelkkavarasto Saariselällä">
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="Saariselka_kentta.JPG" alt="Peräkärrypaikkoja Saariselällä">
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="Saariselka_moottorikelkka_sailytys.JPG" alt="Peräkärrypaikkoja Saariselällä">
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="Saariselka_varasto_5.JPG" alt="Turvallinen varasto Saariselkä">
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="Saariselka_perakarry_sailytys.jpg" alt="Peräkärrypaikkoja Saariselällä">
-                </div>
-                
+                            <div class="gallery-item">
+                                <a href="#img1">
+                                    <img src="Saariselka_varasto_1.jpeg" alt="Lämpimät varastotilat">
+                                </a>
+                            </div>
+                        
+                            <div class="gallery-item">
+                                <a href="#img2">
+                                    <img src="Saariselka_varasto_2.JPG" alt="Tunturivarikko sisätilat">
+                                </a>
+                            </div>
+                        
+                            <div class="gallery-item">
+                                <a href="#img3">
+                                    <img src="Saariselka_varasto_3.JPG" alt="Varastotilat Saariselällä">
+                                </a>
+                            </div>
+                        
+                            <div class="gallery-item">
+                                <a href="#img4">
+                                    <img src="Saariselka_varasto_4.JPG" alt="Varastokontit Tunturivarikko">
+                                </a>
+                            </div>
+                        
+                            <div class="gallery-item">
+                                <a href="#img5">
+                                    <img src="Saariselka_varasto_piha.JPG" alt="Peräkärrypaikkoja Saariselällä">
+                                </a>
+                            </div>
+                        
+                            <div class="gallery-item">
+                                <a href="#img6">
+                                    <img src="Saariselka_varasto_6.JPG" alt="Lämpimät varastotilat">
+                                </a>
+                            </div>
+                        
+                            <div class="gallery-item">
+                                <a href="#img7">
+                                    <img src="Saariselka_varasto_7.jpg" alt="Saariselkä tilaa">
+                                </a>
+                            </div>
+                        
+                            <div class="gallery-item">
+                                <a href="#img8">
+                                    <img src="Saariselka_moottorikelkkavarasto.jpg" alt="Moottorikelkkavarasto Saariselällä">
+                                </a>
+                            </div>
+                        
+                            <div class="gallery-item">
+                                <a href="#img9">
+                                    <img src="Saariselka_kentta.JPG" alt="Peräkärrypaikkoja Saariselällä">
+                                </a>
+                            </div>
+                        
+                            <div class="gallery-item">
+                                <a href="#img10">
+                                    <img src="Saariselka_moottorikelkka_sailytys.JPG" alt="Peräkärrypaikkoja Saariselällä">
+                                </a>
+                            </div>
+                        
+                            <div class="gallery-item">
+                                <a href="#img11">
+                                    <img src="Saariselka_varasto_5.JPG" alt="Turvallinen varasto Saariselkä">
+                                </a>
+                            </div>
+                        
+                            <div class="gallery-item">
+                                <a href="#img12">
+                                    <img src="Saariselka_perakarry_sailytys.jpg" alt="Peräkärrypaikkoja Saariselällä">
+                                </a>
+                            </div>
+                        
+                        </div>
+                        
+                        <!-- LIGHTBOXIT (lisää HTML:n loppuun) -->
+                        <div id="img1" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_1.jpeg"></div>
+                        <div id="img2" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_2.JPG"></div>
+                        <div id="img3" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_3.JPG"></div>
+                        <div id="img4" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_4.JPG"></div>
+                        <div id="img5" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_piha.JPG"></div>
+                        <div id="img6" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_6.JPG"></div>
+                        <div id="img7" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_7.jpg"></div>
+                        <div id="img8" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_moottorikelkkavarasto.jpg"></div>
+                        <div id="img9" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_kentta.JPG"></div>
+                        <div id="img10" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_moottorikelkka_sailytys.JPG"></div>
+                        <div id="img11" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_5.JPG"></div>
+                        <div id="img12" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_perakarry_sailytys.jpg"></div>    
+                                      
             </div>
         </div>
     </section>
