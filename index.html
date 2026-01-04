@@ -56,7 +56,7 @@
                         /* Lightbox koko ruudulle */
                         .lightbox {
                             position: fixed;
-                            inset: 0; /* top:0; left:0; bottom:0; right:0 */
+                            inset: 0;
                             display: none;
                             justify-content: center;
                             align-items: center;
@@ -64,25 +64,24 @@
                             z-index: 9999;
                         }
                         
-                        /* Näytä lightbox kun linkki on klikattu */
+                        /* Näytä lightbox kun linkki klikattu */
                         .lightbox:target {
                             display: flex;
                         }
                         
                         /* Kuva skaalautuu koko ruudulle */
                         .lightbox img {
-                            max-width: 95vw;   /* 95% ruudun leveydestä */
-                            max-height: 95vh;  /* 95% ruudun korkeudesta */
+                            max-width: 95vw;   /* 95% viewportin leveydestä */
+                            max-height: 95vh;  /* 95% viewportin korkeudesta */
                             width: auto;
                             height: auto;
                             object-fit: contain; /* säilyttää kuvasuhteen */
                             display: block;
-                            z-index: 1;
                         }
                         
                         /* Pyöreä X-nappi kuvan päällä */
                         .close-btn {
-                            position: absolute; /* suhteessa viewporttiin */
+                            position: absolute;
                             top: 16px;
                             right: 16px;
                             width: 32px;
@@ -97,14 +96,13 @@
                             text-decoration: none;
                             cursor: pointer;
                             z-index: 10;
-                            transition: transform 0.2s, background 0.2s;
+                            transition: transform 0.2s ease, background 0.2s ease;
                         }
                         
                         .close-btn:hover {
                             background: rgba(0,0,0,0.85);
                             transform: scale(1.1);
                         }
-
 
                         .gallery-grid {
                             display: flex;
@@ -114,7 +112,6 @@
                         
                         .gallery-item img {
                             width: 100%;
-                            max-width: 200px;
                             height: auto;
                             cursor: pointer;
                             transition: transform 0.25s ease;
