@@ -83,6 +83,32 @@
                 color: white;
                 text-decoration: none;
             }
+
+
+                    .close-btn {
+                position: absolute;
+                top: 18px;
+                right: 18px;
+                width: 32px;
+                height: 32px;
+                background: rgba(0, 0, 0, 0.6);
+                color: #fff;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 32px;
+                font-size: 20px;
+                font-weight: bold;
+                text-decoration: none;
+                cursor: pointer;
+                z-index: 10000;
+                transition: background 0.2s ease, transform 0.2s ease;
+            }
+            
+            .close-btn:hover {
+                background: rgba(0, 0, 0, 0.8);
+                transform: scale(1.1);
+            }
+
         
         html {
             scroll-behavior: smooth;
@@ -870,18 +896,18 @@
                         </div>
                         
                         <!-- LIGHTBOXIT (lisää HTML:n loppuun) -->
-                        <div id="img1" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_1.jpeg"></div>
-                        <div id="img2" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_2.JPG"></div>
-                        <div id="img3" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_3.JPG"></div>
-                        <div id="img4" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_4.JPG"></div>
-                        <div id="img5" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_piha.JPG"></div>
-                        <div id="img6" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_6.JPG"></div>
-                        <div id="img7" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_7.jpg"></div>
-                        <div id="img8" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_moottorikelkkavarasto.jpg"></div>
-                        <div id="img9" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_kentta.JPG"></div>
-                        <div id="img10" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_moottorikelkka_sailytys.JPG"></div>
-                        <div id="img11" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_varasto_5.JPG"></div>
-                        <div id="img12" class="lightbox"><a href="#" class="close">×</a><img src="Saariselka_perakarry_sailytys.jpg"></div>    
+                        <div id="img1" class="lightbox"><a href="#" class="close-btn" aria-label="Sulje">×</a><img src="Saariselka_varasto_1.jpeg"></div>
+                        <div id="img2" class="lightbox"><a href="#" class="close-btn" aria-label="Sulje">×</a><img src="Saariselka_varasto_2.JPG"></div>
+                        <div id="img3" class="lightbox"><a href="#" class="close-btn" aria-label="Sulje">×</a><img src="Saariselka_varasto_3.JPG"></div>
+                        <div id="img4" class="lightbox"><a href="#" class="close-btn" aria-label="Sulje">×</a><img src="Saariselka_varasto_4.JPG"></div>
+                        <div id="img5" class="lightbox"><a href="#" class="close-btn" aria-label="Sulje">×</a><img src="Saariselka_varasto_piha.JPG"></div>
+                        <div id="img6" class="lightbox"><a href="#" class="close-btn" aria-label="Sulje">×</a><img src="Saariselka_varasto_6.JPG"></div>
+                        <div id="img7" class="lightbox"><a href="#" class="close-btn" aria-label="Sulje">×</a><img src="Saariselka_varasto_7.jpg"></div>
+                        <div id="img8" class="lightbox"><a href="#" class="close-btn" aria-label="Sulje">×</a><img src="Saariselka_moottorikelkkavarasto.jpg"></div>
+                        <div id="img9" class="lightbox"><a href="#" class="close-btn" aria-label="Sulje">×</a><img src="Saariselka_kentta.JPG"></div>
+                        <div id="img10" class="lightbox"><a href="#" class="close-btn" aria-label="Sulje">×</a><img src="Saariselka_moottorikelkka_sailytys.JPG"></div>
+                        <div id="img11" class="lightbox"><a href="#" class="close-btn" aria-label="Sulje">×</a><img src="Saariselka_varasto_5.JPG"></div>
+                        <div id="img12" class="lightbox"><a href="#" class="close-btn" aria-label="Sulje">×</a><img src="Saariselka_perakarry_sailytys.jpg"></div>    
                                       
             </div>
         </div>
