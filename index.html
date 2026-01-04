@@ -52,88 +52,86 @@
                 .video-button:active {
                     transform: translateY(0);
                 }
-            
-                                /* Galleria grid */
-                                .gallery-grid {
-                                    display: flex;
-                                    flex-wrap: wrap;
-                                    gap: 10px;
-                                }
-                                
-                                .gallery-item img {
-                                    width: 100%;
-                                    max-width: 200px;
-                                    height: auto;
-                                    cursor: pointer;
-                                    transition: transform 0.25s ease;
-                                }
-                                
-                                .gallery-item img:hover {
-                                    transform: scale(1.05);
-                                }
-                                
-                                /* Lightbox koko ruudulle */
-                                .lightbox {
-                                    position: fixed;
-                                    inset: 0;
-                                    display: none;
-                                    justify-content: center;
-                                    align-items: center;
-                                    background: rgba(0,0,0,0.85);
-                                    z-index: 9999;
-                                }
-                                
-                                .lightbox:target {
-                                    display: flex;
-                                }
-                                
-                                /* Lightbox content */
-                                .lightbox-content {
-                                    position: relative;
-                                    display: inline-block;
-                                }
-                                
-                                /* Kuva skaalautuu ruudun kokoon */
-                                .lightbox-content img {
-                                    max-width: 95vw;
-                                    max-height: 95vh;
-                                    width: auto;
-                                    height: auto;
-                                    display: block;
-                                    object-fit: contain;
-                                }
-                                
-                                /* Pyöreä X-nappi */
-                                .close-btn {
-                                    position: absolute;
-                                    top: 8px;
-                                    right: 8px;
-                                    width: 32px;
-                                    height: 32px;
-                                    background: rgba(0,0,0,0.7);
-                                    color: #fff;
-                                    border-radius: 50%;
-                                    text-align: center;
-                                    line-height: 32px;
-                                    font-size: 20px;
-                                    font-weight: bold;
-                                    text-decoration: none;
-                                    cursor: pointer;
-                                    z-index: 10;
-                                    transition: background 0.2s ease, transform 0.2s ease;
-                                }
-                                
-                                .close-btn:hover {
-                                    background: rgba(0,0,0,0.85);
-                                    transform: scale(1.1);
-                                }
-                                
-                                /* Mobiilioptimointi: kuvat hieman pienemmät */
-                                @media (max-width: 600px) {
-                                    .gallery-item img {
-                                        max-width: 45vw;
-                                    }
-                                }
+                                  
+                        /* Lightbox koko ruudulle */
+                        .lightbox {
+                            position: fixed;
+                            inset: 0; /* top:0; left:0; bottom:0; right:0 */
+                            display: none;
+                            justify-content: center;
+                            align-items: center;
+                            background: rgba(0,0,0,0.85);
+                            z-index: 9999;
+                        }
+                        
+                        /* Näytä lightbox kun linkki on klikattu */
+                        .lightbox:target {
+                            display: flex;
+                        }
+                        
+                        /* Kuva skaalautuu koko ruudulle */
+                        .lightbox img {
+                            max-width: 95vw;   /* 95% ruudun leveydestä */
+                            max-height: 95vh;  /* 95% ruudun korkeudesta */
+                            width: auto;
+                            height: auto;
+                            object-fit: contain; /* säilyttää kuvasuhteen */
+                            display: block;
+                            z-index: 1;
+                        }
+                        
+                        /* Pyöreä X-nappi kuvan päällä */
+                        .close-btn {
+                            position: absolute; /* suhteessa viewporttiin */
+                            top: 16px;
+                            right: 16px;
+                            width: 32px;
+                            height: 32px;
+                            background: rgba(0,0,0,0.7);
+                            color: white;
+                            text-align: center;
+                            line-height: 32px;
+                            font-size: 20px;
+                            font-weight: bold;
+                            border-radius: 50%;
+                            text-decoration: none;
+                            cursor: pointer;
+                            z-index: 10;
+                            transition: transform 0.2s, background 0.2s;
+                        }
+                        
+                        .close-btn:hover {
+                            background: rgba(0,0,0,0.85);
+                            transform: scale(1.1);
+                        }
+
+
+                        .gallery-grid {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 10px;
+                        }
+                        
+                        .gallery-item img {
+                            width: 100%;
+                            max-width: 200px;
+                            height: auto;
+                            cursor: pointer;
+                            transition: transform 0.25s ease;
+                        }
+                        
+                        .gallery-item img:hover {
+                            transform: scale(1.05);
+                        }
+                        
+                        /* Mobiili: pienemmät kuvat */
+                        @media (max-width: 600px) {
+                            .gallery-item img {
+                                max-width: 45vw;
+                            }
+                        }
+
+        
         
         html {
             scroll-behavior: smooth;
